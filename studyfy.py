@@ -2,13 +2,16 @@
 print("\nSTUDYFY")
 print("Onde todo o estudante tem espaço para aprender!")
 
+# LISTA PARA GUARDAR TAREFAS
+tarefas = []
+
 # CRIAR CONTA // FAZER LOGIN
-resposta = input("\nVocê já possuí conta? S/N: ")
+resposta = input("\nVocê já possui conta? S/N: ").upper()
 
 temConta = resposta == "S"
 
 if temConta:
-    print("\n --- LOGIN ---")
+    print("--- LOGIN ---")
 
     input("Nome de Usuário: ")
     input("Senha: ")
@@ -16,39 +19,61 @@ if temConta:
     print("Entrando...")
 
 else:
-    print("\n--- CRIAR CONTA ---") 
+    print("\n--- CRIAR CONTA ---")
 
     input("Nome Completo: ")
     input("E-mail Institucional: ")
     input("CPF: ")
     input("Nome de Usuário: ")
     input("Criar Senha: ")
-    
+
     print("Conta criada com sucesso!")
 
-# MENU 
-print("\n--- MENU ---")
-
+# MENU
 while True:
+    print("\n--- MENU ---")
     print("1. Cadastrar tarefa")
     print("2. Listar tarefas")
     print("3. Ver tarefas urgentes")
     print("4. Marcar tarefa como concluída")
     print("5. Sair")
-    
-    opcao = int(input("Escolha uma opção: "))
-    
-    if opcao == 5:
-        print("Saindo")
-    break  
 
-    elif opcao == '1':
-    
-    elif opcao == '2':
-    
-    elif opcao == '3':
- 
-    elif opcao == '4':
+    opcao = input("Escolha uma opção: ")
 
+    # SAIR
+    if opcao == "5":
+        print("Saindo...")
+        break
+
+    # CADASTRAR TAREFA
+    elif opcao == "1":
+        print("--- CADASTRAR TAREFA ---")
+        nome = input("Nome da tarefa: ")
+        urgente = input("É urgente? (s/n): ").lower()
+
+        tarefa = {
+            "nome": nome,
+            "urgente": urgente == "s",
+            "concluida": False
+        }
+
+        tarefas.append(tarefa)
+        print("Tarefa cadastrada com sucesso!")
+
+    # LISTAR TODAS
+    elif opcao == "2":
+        print("--- LISTAR TAREFAS ---")
+        if len(tarefas) == 0:
+            print("Nenhuma tarefa cadastrada.")
+
+    # VER URGENTES
+    elif opcao == "3":
+        pass
+
+    # MARCAR COMO CONCLUÍDA
+    elif opcao == "4":
+        pass
+
+    # OPÇÃO INVÁLIDA
     else:
-    print("Opção Inválida, tente novamente!")
+        print("Opção inválida, tente novamente!")
